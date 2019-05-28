@@ -39,10 +39,33 @@ export const importGist: Action<string> = async (
   actions.Storage.addFiles(await effects.loadGist(gistId));
 };
 
+/*
 export const askImportGist: Action = ({ actions }) => {
   const gistId = window.prompt('Input GistId:');
   if (gistId) {
     actions.importGist(gistId);
+  }
+};
+*/
+
+export const askImportGist: Action = async ({ actions, effects }) => {
+  const projectName = window.prompt('Input Project Name:', 'NewProject');
+  if (projectName) {
+    if (await effects.Storage.hasProject(projectName)) {
+      const confirmed = window.confirm(
+        `There is a project with name "${projectName}". Do you want to overwrite it?`
+      );
+      if (!confirmed) {
+        return;
+      }
+    }
+    actions.Editor.saveAllFiles();
+    actions.Storage.openProject(projectName);
+
+    const gistId = window.prompt('Input GistId:');
+    if (gistId) {
+      actions.importGist(gistId);
+    }
   }
 };
 

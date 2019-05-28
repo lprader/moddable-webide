@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core';
 import React from 'react';
 
+import PlusIcon from '../Icons/PlusIcon';
 import FileIcon from '../Icons/FileIcon';
 import DebugIcon from '../Icons/DebugIcon';
 
@@ -10,6 +11,24 @@ import ActivityBarButton from './ActivityBarButton';
 import { useOvermind } from '../../overmind';
 import { SidebarView } from '../../overmind/rootState';
 import { DebugState } from '../../overmind/Device/state';
+
+const ProjectExplorerButton: React.FC = () => {
+  const {
+    state: { selectedSidebarView },
+    actions: { setActiveSidebarView }
+  } = useOvermind();
+
+  return (
+    <ActivityBarButton
+      selected={selectedSidebarView === SidebarView.ProjectExplorer}
+      onClick={() => {
+        setActiveSidebarView(SidebarView.ProjectExplorer);
+      }}
+    >
+      <PlusIcon />
+    </ActivityBarButton>
+  );
+};
 
 const FileExplorerButton: React.FC = () => {
   const {
@@ -69,6 +88,7 @@ const ActivityBar: React.FunctionComponent = () => {
         paddingTop: '10px'
       }}
     >
+      <ProjectExplorerButton />
       <FileExplorerButton />
       <DebugButton />
     </div>

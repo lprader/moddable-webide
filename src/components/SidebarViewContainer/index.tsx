@@ -7,6 +7,7 @@ import { SidebarView } from '../../overmind/rootState';
 
 import SidebarFileExplorer from '../SidebarFileExplorer';
 import SidebarDebug from '../SidebarDebug';
+import SidebarProjectExplorer from '../SidebarProjectExplorer';
 import Button from '../Button';
 
 const SidebarViewContainer: React.FunctionComponent = () => {
@@ -19,6 +20,8 @@ const SidebarViewContainer: React.FunctionComponent = () => {
       return <SidebarFileExplorer />;
     case SidebarView.Debug:
       return <SidebarDebug />;
+    case SidebarView.ProjectExplorer:
+      return <SidebarProjectExplorer />;
   }
 
   return null;
