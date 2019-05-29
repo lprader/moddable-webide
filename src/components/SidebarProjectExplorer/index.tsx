@@ -44,9 +44,9 @@ const ProjectExplorer: React.FunctionComponent = () => {
   useEffect(() => {
     let unmounted = false;
     getProjectList().then(newProjects => {
-      const projects = newProjects.filter(name => name !== currentProject);
+      //const projects = newProjects.filter(name => name !== currentProject);
       if (!unmounted) {
-        setProjects(projects);
+        setProjects(newProjects);
       }
     });
     return () => {
@@ -86,8 +86,6 @@ const ProjectExplorer: React.FunctionComponent = () => {
             marginLeft: '1em',
           }}>
           <header>Actions:</header>
-          <Button onClick={askNewProject}>Create a new Project</Button>
-          <Button onClick={() => loadSampleData('')}>Load example data</Button>
           <Button onClick={askImportGist}>Import GitHub Gist</Button>
         </section>
       </section>
