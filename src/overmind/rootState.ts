@@ -1,15 +1,16 @@
 export enum SidebarView {
   Hidden,
+  ProjectExplorer,
   FileExplorer,
   Debug
 }
 
 export type State = {
-  selectedSidebarView: SidebarView;
+  selectedSidebarView: ProjectExplorer;
 };
 
 const state: State = {
-  selectedSidebarView: SidebarView.FileExplorer
+  selectedSidebarView: SidebarView.ProjectExplorer
 };
 
 export default state;
