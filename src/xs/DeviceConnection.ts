@@ -630,7 +630,7 @@ export class DeviceConnectionUsb extends DeviceConnection {
     super();
     this.encoder = new TextEncoder();
     this.decoder = new TextDecoder();
-    this.baud = options.baud || 921600;
+    this.baud = options.baud || 460800;
     this.dst = new Uint8Array(32 << 10);
 
     this.on(XsbugMessageType.Login, () => {
