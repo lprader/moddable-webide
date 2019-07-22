@@ -14,16 +14,16 @@ import Editor from './components/Editor';
 import TopBar from './components/TopBar';
 import ActivityBar from './components/ActivityBar';
 
-import { DragDropContextProvider } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import HTML5Backend from './utils/HTML5DirectoryBackend';
-import { Provider } from 'overmind-react';
 
 import { overmind } from './overmind';
+import { Provider as OvermindProvider } from 'overmind-react';
 
 const App: React.FunctionComponent = () => {
   return (
-    <DragDropContextProvider backend={HTML5Backend}>
-      <Provider value={overmind}>
+    <DndProvider backend={HTML5Backend}>
+      <OvermindProvider value={overmind}>
         <div
           css={{
             display: 'grid',
@@ -63,9 +63,8 @@ const App: React.FunctionComponent = () => {
             />
           </div>
         </div>
-      </Provider>
-    </DragDropContextProvider>
+      </OvermindProvider>
+    </DndProvider>
   );
 };
-
 ReactDOM.render(<App />, document.getElementById('root'));
