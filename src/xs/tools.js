@@ -53,8 +53,8 @@ Module['postRun'] = [];
 // Determine the runtime environment we are in. You can customize this by
 // setting the ENVIRONMENT setting at compile time (see settings.js).
 
-var ENVIRONMENT_IS_WEB = false;
-var ENVIRONMENT_IS_WORKER = true;
+var ENVIRONMENT_IS_WEB = true;
+var ENVIRONMENT_IS_WORKER = false;
 var ENVIRONMENT_IS_NODE = false;
 var ENVIRONMENT_HAS_NODE = ENVIRONMENT_IS_NODE;
 var ENVIRONMENT_IS_SHELL = false;
@@ -1169,11 +1169,11 @@ function updateGlobalBufferViews() {
 
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 327264,
+    STACK_BASE = 326400,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 5570144,
-    DYNAMIC_BASE = 5570144,
-    DYNAMICTOP_PTR = 327232;
+    STACK_MAX = 5569280,
+    DYNAMIC_BASE = 5569280,
+    DYNAMICTOP_PTR = 326368;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1667,7 +1667,7 @@ var ASM_CONSTS = [];
 
 
 
-// STATICTOP = STATIC_BASE + 326240;
+// STATICTOP = STATIC_BASE + 325376;
 /* global initializers */  __ATINIT__.push({ func: function() { ___emscripten_environ_constructor() } });
 
 
@@ -1678,7 +1678,7 @@ var ASM_CONSTS = [];
 
 
 /* no memory initializer */
-var tempDoublePtr = 327248
+var tempDoublePtr = 326384
 assert(tempDoublePtr % 8 == 0);
 
 function copyTempFloat(ptr) { // functions, because inlining this code increases code size too much
@@ -4812,6 +4812,9 @@ function copyTempDouble(ptr) {
   
               // If node we use the ws library.
               var WebSocketConstructor;
+              if (ENVIRONMENT_IS_WEB) {
+                WebSocketConstructor = window['WebSocket'];
+              } else
               {
                 WebSocketConstructor = WebSocket;
               }
@@ -6057,10 +6060,10 @@ function copyTempDouble(ptr) {
   var _llvm_trunc_f64=Math_trunc;
 
   
-  var ___tm_current=327088;
+  var ___tm_current=326224;
   
   
-  var ___tm_timezone=(stringToUTF8("GMT", 327136, 4), 327136);
+  var ___tm_timezone=(stringToUTF8("GMT", 326272, 4), 326272);
   
   function _tzset() {
       // TODO: Use (malleable) environment variables instead of system settings.
