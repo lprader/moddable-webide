@@ -53,8 +53,8 @@ Module['postRun'] = [];
 // Determine the runtime environment we are in. You can customize this by
 // setting the ENVIRONMENT setting at compile time (see settings.js).
 
-var ENVIRONMENT_IS_WEB = true;
-var ENVIRONMENT_IS_WORKER = false;
+var ENVIRONMENT_IS_WEB = false;
+var ENVIRONMENT_IS_WORKER = true;
 var ENVIRONMENT_IS_NODE = false;
 var ENVIRONMENT_HAS_NODE = ENVIRONMENT_IS_NODE;
 var ENVIRONMENT_IS_SHELL = false;
@@ -4812,9 +4812,6 @@ function copyTempDouble(ptr) {
   
               // If node we use the ws library.
               var WebSocketConstructor;
-              if (ENVIRONMENT_IS_WEB) {
-                WebSocketConstructor = window['WebSocket'];
-              } else
               {
                 WebSocketConstructor = WebSocket;
               }
