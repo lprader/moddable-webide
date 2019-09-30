@@ -1,13 +1,10 @@
 {
   "name": "moddable-webide",
-  "version": "8.9.4",
+  "version": "1.0.0",
   "description": "A WebIDE to get started with javascript on microcontrollers",
-  "private": false,
-  "engines": {
-    "node": "8.9.4"
-  },
+  "private": true,
   "scripts": {
-    "start": "webpack-dev-server --https --host 0.0.0.0 --open --config webpack.dev.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "debug": "overmind-devtools"
   },
