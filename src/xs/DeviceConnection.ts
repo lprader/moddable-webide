@@ -677,7 +677,7 @@ export class DeviceConnectionUsb extends DeviceConnection {
   }
   initalizeUSB(usb) {
     this.usb = usb;
-    let endpoints = usb.configuration.interfaces[0].alternates[0].endpoints;
+    let endpoints = usb.configurations[0].interfaces[0].alternates[0].endpoints;
     let inEndpoint, outEndpoint;
     for (let i = 0; i < endpoints.length; i++) {
       if ('out' === endpoints[i].direction)
