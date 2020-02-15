@@ -10,15 +10,15 @@ export const onInitialize: OnInitialize = async ({
   const projectName = urlParams.get('project');
   if (await effects.Storage.hasProject(projectName)) {
     actions.Storage.openProject(projectName);
-  } else if (await effects.Storage.hasProject('light')) {
-	actions.Storage.openProject('light');
+  } else if (await effects.Storage.hasProject('time-date-weather')) {
+	actions.Storage.openProject('time-date-weather');
   } else {
-	await actions.Storage.openProject('light');
-	await actions.importGist('c2e638a2e8ebaff796d67f2d2dd0783d');
-	await actions.Storage.openProject('sign');
-	await actions.importGist('9f526d43030bd3c96fead27eebaf5303');
-	await actions.Storage.openProject('thermometer');
-	await actions.importGist('514a010e7acff8520f60839ecc749da5');
-	actions.Storage.openProject('light');
+	await actions.Storage.openProject('time-date-weather');
+	await actions.importGist('68f581c1067a1d71ad7e2f7f5a7bdfec');
+	await actions.Storage.openProject('colored-circles');
+	await actions.importGist('1abbd984db8b087db14b49e143d40480');
+	await actions.Storage.openProject('motion-sensor');
+	await actions.importGist('a38d385727d03291d892938c59ab359c');
+	actions.Storage.openProject('time-date-weather');
   }
 };
